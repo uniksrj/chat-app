@@ -84,6 +84,7 @@ const { hash } = window.location;
                         startBtn.innerHTML = '<i class="fa-solid fa-microphone-lines"></i>';
                     } else {
                         finalTranscript = '';
+                        transcriptDiv.value = '';
                         recognition.start();
                         recognizing = true;
                         startBtn.innerHTML = '<i class="fa-solid fa-microphone-lines-slash"></i>';
