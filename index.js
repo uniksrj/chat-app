@@ -23,16 +23,16 @@ const { hash } = window.location;
 
         document.querySelector('form').addEventListener('submit', event => {
             event.preventDefault();
-
-            document.querySelector('#message-linkk').classList.add('hide');
-            document.querySelector('#link-list').classList.remove('hide');
-
             let message = document.querySelector('#message-input').value;
-            const encryptedMessage = encodeMessage(message);
-
-            let inputLink = document.querySelector('#link-input');
-            inputLink.value = `${window.location.origin}${window.location.pathname}#${encryptedMessage}`;
-            inputLink.select();
+            if(message){
+                const encryptedMessage = encodeMessage(message);
+                document.querySelector('#message-linkk').classList.add('hide');
+                document.querySelector('#link-list').classList.remove('hide');         
+    
+                let inputLink = document.querySelector('#link-input');
+                inputLink.value = `${window.location.origin}${window.location.pathname}#${encryptedMessage}`;
+                inputLink.select();
+            }            
         });
 
         const button = document.querySelector('#emoji-button');
@@ -63,11 +63,10 @@ const { hash } = window.location;
             
         
             // Set recognition parameters
-            recognition.continuous = true; // Keep listening until stopped
-            recognition.interimResults = true; // Show interim results
-            recognition.lang = window.navigator.language; // Language
+            recognition.continuous = true; 
+            recognition.interimResults = true; 
+            recognition.lang = window.navigator.language; 
         
-            // Elements
             const startBtn = document.getElementById('start-btn');
             const transcriptDiv = document.getElementById('message-input');
         
@@ -122,9 +121,7 @@ const { hash } = window.location;
                 console.log('Speech recognition service disconnected');
                 recognizing = false;
                 startBtn.innerHTML = '<i class="fa-solid fa-microphone-lines"></i>';
-            });
-        
-            
+            });   
         }
 
     });
